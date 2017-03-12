@@ -1,0 +1,10 @@
+Blackjack game logic
+
+-everyone gets two cards
+-in order, see who wants to hit
+--> hit if sum < 21
+--> passing (ie, not hitting) is rng
+--> NEVER hit on 21
+----> the closer the sum is to 21, the lower the likelihood
+--> dealer hits until they get 17***
+----> dealer will always be the last person in the list of players
