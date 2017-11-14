@@ -3,16 +3,18 @@
 * right child > parent. This is a basic tree and does not self-balance.
 * In other words, this is more correctly a binary heap but whatever yo.
 */
+import java.util.Random;
+
 public class BinaryTree{
 	private static Node treeRoot = null;
+	private static Random randomNum = new Random();
 
 	public static void main (String [] args){
 		System.out.println("\n\tBINARY TREE\n");
-		addNode(new Node(7));
-		addNode(new Node(12));
-		addNode(new Node(5));
-		addNode(new Node(2));
-		addNode(new Node(6));
+
+		for (int i = 0; i < 10; i++){
+			addNode(new Node(randomNum.nextInt(50)));
+		}
 		printTree(treeRoot);
 	}//end of main method
 
@@ -61,21 +63,28 @@ public class BinaryTree{
 	}//end of addRest
 
 	public static String printTree(Node node){
-		String allVals = "" + node.getVal();
-		if (node.hasLeft()){
-			allVals += " -> " + node.getLeftChild().getVal();
-		}
-		if (node.hasRight()){
-			allVals += " and " + node.getRightChild().getVal();
-		}
+		String allVals = "Parent: " + node.getVal();
 
-		System.out.println(allVals); 
-		
 		if (node.hasLeft()){
-			buildStr(node.getLeftChild());
+			allVals += " -> left: " + node.getLeftChild().getVal();
+		}
+		else{
+			allVals += " -> no left child";
 		}
 		if (node.hasRight()){
-			buildStr(node.getRightChild());
+			allVals += " and right: " + node.getRightChild().getVal();
+		}
+		else{
+			allVals += " and no right child";
+		}
+		//prints out the built string to the console
+		System.out.println(allVals); 
+		//recursively goes down tree to each child node, if present
+		if (node.hasLeft()){
+			printTree(node.getLeftChild());
+		}
+		if (node.hasRight()){
+			printTree(node.getRightChild());
 		}
 		return allVals;
 	}//end of printTree
