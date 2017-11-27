@@ -88,20 +88,6 @@ public class BinaryTree{
 		}
 		return allVals;
 	}//end of printTree
-
-	private static String buildStr(Node node){
-		String allVals = "\n" + node.getVal();
-		if (node.hasLeft()){
-			allVals += " -> " + node.getLeftChild().getVal();
-			buildStr(node.getLeftChild());
-		}
-		if (node.hasRight()){
-			allVals += " and " + node.getRightChild().getVal();
-			buildStr(node.getRightChild());
-		}
-		System.out.println(allVals);
-		return allVals;
-	}
 }//end of BinaryTree class
 
 //node class 

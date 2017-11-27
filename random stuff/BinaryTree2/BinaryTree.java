@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class BinaryTree{
 	private static Node root = null;
-
+	
 	public static void main (String [] args){
 		System.out.println("\n\tSelf-Balancing Binary Tree\n");
 		addNode(new Node(3));
@@ -26,29 +26,29 @@ public class BinaryTree{
 			root = newNode;
 		}
 		else{
-			//then we check if there is a left root; if no, we set the new node to
-			//be the left root and check if we need to swap parent and child vals
-			if (!root.hasLeft()){
-				root.setLeft(newNode);
-				swapWithLeft(root, root.getLeft());
-			}
-			//if there is a left, but no right, we put it in the right child,
-			//then swap values if need be
-			else if (!root.hasRight()){
-				root.setRight(newNode);
-				swapWithRight(root, root.getRight());
-				swapWithLeft(root, root.getLeft());
-			}
-			else{
-
-			}
+			traverseRest(root, newNode);
 		}
 	}//end of addNode
 
 	//since the root is a special case in a sense, we have to interact with
 	//it separately from the other nodes; this manipulates the rest of them
 	private static void traverseRest(Node current, Node newNode){
+		//then we check if there is a left root; if no, we set the new node to
+			//be the left root and check if we need to swap parent and child vals
+			if (!current.hasLeft()){
+				current.setLeft(newNode);
+				swapWithLeft(current, current.getLeft());
+			}
+			//if there is a left, but no right, we put it in the right child,
+			//then swap values if need be
+			else if (!current.hasRight()){
+				current.setRight(newNode);
+				swapWithRight(current, current.getRight());
+				swapWithLeft(current, current.getLeft());
+			}
+			else{
 
+			}
 	}//end of traverseRest
 
 	private static void swapWithLeft(Node parentNode, Node childNode){
